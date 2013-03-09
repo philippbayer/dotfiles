@@ -11,10 +11,13 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 PATH=$PATH:/usr/local/go/bin # Add Golang
 export PATH
 
+# add Z
+. ./z/z.sh
+
 # User specific aliases and functions
 
 # Add colors for filetype and  human-readable sizes by default on 'ls':
-alias ls='ls -ha --color'
+alias ls='ls -h --color'
 
 # The ubiquitous 'll': directories first, with alphanumeric sorting:
 alias ll="ls -lh --group-directories-first"
