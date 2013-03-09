@@ -1,0 +1,1 @@
+hardstatus alwayslastline "%{=b}%{G} Screen(s): %{b}%w %=%{kG}%C%A %D, %M/%d/%Y "
