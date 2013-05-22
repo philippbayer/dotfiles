@@ -25,6 +25,8 @@ alias lm='ll |more'        #  Pipe through 'more'
 alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 
+alias less='less -n'       #  Turn off line-numbers in less. Good for large files.
+
 function extract()
 {
     if [ -f $1 ] ; then
