@@ -1,3 +1,5 @@
+" Initially based on http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide, then removed a lot of stuff and added a little bit
+
 " shortcuts
 let mapleader=","     " change the leader to comma
 
