@@ -1,9 +1,6 @@
 " shortcuts
 let mapleader=","     " change the leader to comma
 
-" Run pep8
-let g:pep8_map='<leader>8'
-
 " Paste from clipboard
 map <leader>p "+p
 
@@ -71,10 +68,6 @@ set shortmess+=a            " Use [+]/[RO]/[w] for modified/readonly/written.
 set laststatus=2            " Always show statusline, even if only 1 window.
 set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})\]
 
-" displays tabs with :set list & displays when a line runs off-screen
-set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
-set list
-
 """ Searching and Patterns
 set ignorecase              " Default to using case insensitive searches,
 set smartcase               " unless uppercase letters are used in the regex.
@@ -98,6 +91,7 @@ au BufRead *.js set makeprg=jslint\ %
 autocmd FileType html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 " Python
+let g:pep8_map='<leader>8'
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType python setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 au FileType coffee setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
@@ -106,6 +100,10 @@ let g:pyflakes_use_quickfix = 0
 
 " Ruby
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
+"Golang
+set runtimepath+=$GOROOT/misc/vim
+autocmd BufWritePost *.go :silent Fmt " Automatically format using gofmt
 
 " Add the virtualenv's site-packages to vim path
 if has('python')
