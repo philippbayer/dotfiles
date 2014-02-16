@@ -1,5 +1,3 @@
-" Initially based on http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide, then removed a lot of stuff and added a little bit
-
 " shortcuts
 let mapleader=","     " change the leader to comma
 
@@ -48,8 +46,6 @@ set softtabstop=4           " <BS> over an autoindent deletes both spaces.
 set expandtab               " Use spaces, not tabs, for autoindent/tab key.
 set shiftround              " rounds indent to a multiple of shiftwidth
 set matchpairs+=<:>         " show matching <> (html mainly) as well
-set foldmethod=indent       " allow us to fold on indents
-set foldlevel=99            " don't fold by default
 
 " don't outdent hashes
 inoremap # #
@@ -86,6 +82,9 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Remove trailing whitespace on <leader>S
 nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 
+" Markdown
+autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_au
+
 " Javascript
 au BufRead *.js set makeprg=jslint\ %
 
@@ -120,3 +119,5 @@ if 'VIRTUAL_ENV' in os.environ:
     execfile(activate_this, dict(__file__=activate_this))
 EOF
 endif
+
+set nofoldenable
