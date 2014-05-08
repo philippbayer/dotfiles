@@ -56,6 +56,20 @@ set noautowriteall          " NEVER.
 set noautoread              " Don't automatically re-read changed files.
 set ffs=unix,dos,mac        " Try recognizing dos, unix, and mac line endings.
 
+" mapping to make movements operate on 1 screen line in wrap mode
+" via http://stackoverflow.com/questions/4946421/vim-moving-with-hjkl-in-long-lines-screen-lines
+function! ScreenMovement(movement)
+   if &wrap
+      return "g" . a:movement
+   else
+      return a:movement
+   endif
+endfunction
+onoremap <silent> <expr> <Down> ScreenMovement('<Down>') " Arrow keys because I'm like that
+onoremap <silent> <expr> <Up> ScreenMovement('<Up>')
+nnoremap <silent> <expr> <Down> ScreenMovement('<Down>')
+nnoremap <silent> <expr> <Up> ScreenMovement('<Up>')
+
 """" Messages, Info, Status
 set ls=2                    " allways show status line
 set vb t_vb=                " Disable all bells.  I hate ringing/flashing.
