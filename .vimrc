@@ -97,7 +97,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nnoremap <leader>S :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Markdown
-autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_au
+autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_au nofoldenable
 
 " Javascript
 au BufRead *.js set makeprg=jslint\ %
