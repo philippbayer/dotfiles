@@ -17,11 +17,6 @@ alias topmelong="squeue -u pbayer -o '%.18i %.9P %.70j %.8u %.2t %.10M %.6D %R' 
 alias qstat='scontrol show job'
 alias cdebi='cd /scratch/pawsey0390/pbayer'
 
-export GEM_HOME='/home/pbayer/.gem/'
-export PATH="$GEM_HOME/bin:$PATH"
-
-#export PERLPATH=$PERLPATH:/home/pbayer/perl5/lib/perl5/x86_64-linux-thread-multi/
-
 function topme3() {
     if [ ! -z "$@" ];
     then
@@ -32,21 +27,10 @@ function topme3() {
     sacct -S `date --date "$arg" +%Y-%m-%d` -o "Submit,JobID,JobName,Partition,NCPUS,State,ExitCode,Elapsed,CPUTime,MaxRSS"
 }
 
-
-function curlUp() {
-    curl -T "$@"  --user 'philipp.bayer@uwa.edu.au' https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/
-}
-
-function curlList() {
- curl -X PROPFIND --user "philipp.bayer@uwa.edu.au" https://cloudstor.aarnet.edu.au/plus/remote.php/webdav/ | grep -Po '(?<=/plus/remote.php/webdav/).+?(?=<)'
- }
-
 function touchAll() {
     for l in $(find . -printf "%T@ %Tc %p\n" | sort -n | cut -f 7 -d ' '); do touch $l; sleep 0.1; done
 }
 
-
-source /software/projects/pawsey0149/groupEnv/ivec/myProfile.txt
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
